@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pragraproject
+  labels:
+    app: pragraapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pragraapp
+  template:
+    metadata:
+      labels:
+        app: pragraapp
+    spec:
+      containers:
+      - name: python-app
+        image: nanarh1/jenkinsproject  
+        ports:
+        - containerPort: 8000
+   imagePullSecrets:
+        - name: regcred
